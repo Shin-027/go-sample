@@ -4,14 +4,11 @@
 version: 2
 jobs:
   build:
-    docker:
-      # specify the version
-      - image: golang:1.4.1-onbuild
-
-    working_directory: /go/src/github.com/{{ORG_NAME}}/{{REPO_NAME}}
+    machine: true
+    working_directory: ~/project/{{ORG_NAME}}/{{REPO_NAME}}
     steps:
       - checkout
 
       # specify any bash command here prefixed with `run: `
       - run: pip install awsebcli --upgrade --user
-      - run: zip /go/src/github.com/{{ORG_NAME}}/{{REPO_NAME}}/eb-go-sample
+      - run: zip ~/project/{{ORG_NAME}}/{{REPO_NAME}}/eb-go-sample
