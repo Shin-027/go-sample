@@ -11,4 +11,5 @@ jobs:
 
       # specify any bash command here prefixed with `run: `
       - run: pip install awsebcli --upgrade --user
-      - run: zip ~/project/{{ORG_NAME}}/{{REPO_NAME}}/eb-go-sample
+      - run: zip ~/project/{{ORG_NAME}}/{{REPO_NAME}}/eb-go-sample/go-sample.zip ~/project/{{ORG_NAME}}/{{REPO_NAME}}/eb-go-sample/*
+      
