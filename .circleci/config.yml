@@ -15,4 +15,5 @@ jobs:
       - run: zip ~/project/{{ORG_NAME}}/{{REPO_NAME}}/eb-go-sample/go-sample.zip ~/project/{{ORG_NAME}}/{{REPO_NAME}}/eb-go-sample/*
       #- run: eb deploy eb-go-sample2
       - run: cd ~/project/{{ORG_NAME}}/{{REPO_NAME}}/eb-go-sample/
+      - run: ls
       - run: eb deploy eb-go-sample2
