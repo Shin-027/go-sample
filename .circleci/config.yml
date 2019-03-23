@@ -10,8 +10,8 @@ jobs:
       - run:
           command: |
             pip install awsebcli --upgrade
-            mv ~/project/{{ORG_NAME}}/{{REPO_NAME}}/eb-go-sample/Dockerfile ~/project/{{ORG_NAME}}/{{REPO_NAME}}/eb-go-sample/Dockerfile.local
-            zip ~/project/{{ORG_NAME}}/{{REPO_NAME}}/eb-go-sample/go-sample.zip ~/project/{{ORG_NAME}}/{{REPO_NAME}}/eb-go-sample/*
+            mv ./eb-go-sample/Dockerfile ./eb-go-sample/Dockerfile.local
+            zip ./eb-go-sample/go-sample.zip ./eb-go-sample/*
 
       # deploy to erasticbeanstalk
       - deploy:
