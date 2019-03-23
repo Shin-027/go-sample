@@ -1,6 +1,3 @@
-# Golang CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-go/ for more details
 version: 2
 jobs:
   build:
@@ -14,4 +11,4 @@ jobs:
       - run: mv ~/project/{{ORG_NAME}}/{{REPO_NAME}}/eb-go-sample/Dockerfile ~/project/{{ORG_NAME}}/{{REPO_NAME}}/eb-go-sample/Dockerfile.local
       - run: zip ~/project/{{ORG_NAME}}/{{REPO_NAME}}/eb-go-sample/go-sample.zip ~/project/{{ORG_NAME}}/{{REPO_NAME}}/eb-go-sample/*
       #- run: eb deploy eb-go-sample2
-      - run: cd ~/project/{{ORG_NAME}}/{{REPO_NAME}}/eb-go-sample/ && eb deploy
+      - deploy: cd ~/project/{{ORG_NAME}}/{{REPO_NAME}}/eb-go-sample/ && eb deploy
