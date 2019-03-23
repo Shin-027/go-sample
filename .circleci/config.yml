@@ -7,9 +7,12 @@ jobs:
       - checkout
 
       # specify any bash command here prefixed with `run: `
-      - run: pip install awsebcli --upgrade
-      - run: mv ~/project/{{ORG_NAME}}/{{REPO_NAME}}/eb-go-sample/Dockerfile ~/project/{{ORG_NAME}}/{{REPO_NAME}}/eb-go-sample/Dockerfile.local
-      - run: zip ~/project/{{ORG_NAME}}/{{REPO_NAME}}/eb-go-sample/go-sample.zip ~/project/{{ORG_NAME}}/{{REPO_NAME}}/eb-go-sample/*
-      #- run: eb deploy eb-go-sample2
+      - run:
+          command: |
+            pip install awsebcli --upgrade
+            mv ~/project/{{ORG_NAME}}/{{REPO_NAME}}/eb-go-sample/Dockerfile ~/project/{{ORG_NAME}}/{{REPO_NAME}}/eb-go-sample/Dockerfile.local
+            zip ~/project/{{ORG_NAME}}/{{REPO_NAME}}/eb-go-sample/go-sample.zip ~/project/{{ORG_NAME}}/{{REPO_NAME}}/eb-go-sample/*
+
+      # deploy to erasticbeanstalk
       - deploy:
           command: cd ~/project/{{ORG_NAME}}/{{REPO_NAME}}/eb-go-sample/ && eb deploy
