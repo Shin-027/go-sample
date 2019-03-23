@@ -6,13 +6,13 @@ jobs:
     steps:
       - checkout
 
-      # specify any bash command here prefixed with `run: `
       - run:
+          name: Archive
           command: |
             pip install awsebcli --upgrade
             mv ./eb-go-sample/Dockerfile ./eb-go-sample/Dockerfile.local
             zip ./eb-go-sample/go-sample.zip ./eb-go-sample/*
 
-      # deploy to erasticbeanstalk
       - deploy:
+          name: Deploy to EB
           command: cd ~/project/{{ORG_NAME}}/{{REPO_NAME}}/eb-go-sample/ && eb deploy
