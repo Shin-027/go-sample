@@ -11,4 +11,5 @@ jobs:
       - run: mv ~/project/{{ORG_NAME}}/{{REPO_NAME}}/eb-go-sample/Dockerfile ~/project/{{ORG_NAME}}/{{REPO_NAME}}/eb-go-sample/Dockerfile.local
       - run: zip ~/project/{{ORG_NAME}}/{{REPO_NAME}}/eb-go-sample/go-sample.zip ~/project/{{ORG_NAME}}/{{REPO_NAME}}/eb-go-sample/*
       #- run: eb deploy eb-go-sample2
-      - deploy: cd ~/project/{{ORG_NAME}}/{{REPO_NAME}}/eb-go-sample/ && eb deploy
+      - deploy:
+          command: cd ~/project/{{ORG_NAME}}/{{REPO_NAME}}/eb-go-sample/ && eb deploy
