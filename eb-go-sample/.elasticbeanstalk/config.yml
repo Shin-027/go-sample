@@ -16,4 +16,5 @@ global:
   platform_name: null
   platform_version: null
   sc: null
+  profile: eb-cli
   workspace_type: Application
