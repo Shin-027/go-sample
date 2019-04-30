@@ -9,10 +9,26 @@ jobs:
       - run:
           name: Archive
           command: |
-            pip install awsebcli --upgrade
             mv ./eb-go-sample/Dockerfile ./eb-go-sample/Dockerfile.local
             zip ./eb-go-sample/go-sample.zip ./eb-go-sample/*
 
-      - deploy:
+      -  persist_to_workspace:
+          root: . # workspaceのrootパス（絶対パスかworking_directoryからの相対パス）
+          paths:
+            - . # 共有するパス（絶対パスかrootからの相対パス）
+
+    deploy:
+      steps:
           name: Deploy to EB
-          command: cd ~/project/{{ORG_NAME}}/{{REPO_NAME}}/eb-go-sample/ && eb deploy
+          command: |
+            pip install awsebcli --upgrade
+            cd ~/project/{{ORG_NAME}}/{{REPO_NAME}}/eb-go-sample/ && eb deploy
+
+workflows:
+  version: 2
+  archive_and_deploy:
+    jobs:
+      - build
+      - deploy
+          requires:
+            - build
