@@ -34,7 +34,17 @@ jobs:
             $SLACK_WEBHOOK_URL \
             -H 'content-type: application/json' \
             -d '{
-              "text": "Deploy Faild!"
+              "text": "Deploy succeeded!"
+            }'
+          when: on_success
+      - run:
+          name: Notification to Slack
+          commaned:  |
+            curl -X POST \
+            $SLACK_WEBHOOK_URL \
+            -H 'content-type: application/json' \
+            -d '{
+              "text": "Deploy Failed!"
             }'
           when: on_fail
 
