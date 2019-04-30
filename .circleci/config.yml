@@ -29,6 +29,6 @@ workflows:
   archive_and_deploy:
     jobs:
       - build
-      - deploy
+      - deploy:
           requires:
             - build
