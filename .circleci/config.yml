@@ -36,3 +36,8 @@ workflows:
       - deploy:
           requires:
             - archive
+          filters:
+           tags:
+             only: /^v.*/
+           branches:
+             ignore: /.*/
