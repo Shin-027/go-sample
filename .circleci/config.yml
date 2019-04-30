@@ -16,9 +16,12 @@ jobs:
           root: . # workspaceのrootパス（絶対パスかworking_directoryからの相対パス）
           paths:
             - . # 共有するパス（絶対パスかrootからの相対パス）
-
-    deploy:
-      steps:
+  deploy:
+    machine: true
+    working_directory: ~/project/{{ORG_NAME}}/{{REPO_NAME}}
+    steps:
+      - attach_workspace: # workspaceをアタッチする
+          at: .
           name: Deploy to EB
           command: |
             pip install awsebcli --upgrade
