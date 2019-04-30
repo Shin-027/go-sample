@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  archive:
     machine: true
     working_directory: ~/project/{{ORG_NAME}}/{{REPO_NAME}}
     steps:
@@ -13,14 +13,14 @@ jobs:
             zip ./eb-go-sample/go-sample.zip ./eb-go-sample/*
 
       -  persist_to_workspace:
-          root: . # workspaceのrootパス（絶対パスかworking_directoryからの相対パス）
+          root: . # working_directoryからの相対パス
           paths:
-            - . # 共有するパス（絶対パスかrootからの相対パス）
+            - .   # rootからの相対パス
   deploy:
     machine: true
     working_directory: ~/project/{{ORG_NAME}}/{{REPO_NAME}}
     steps:
-      - attach_workspace: # workspaceをアタッチする
+      - attach_workspace: # working_directoryからの相対パス
           at: .
       - run:
           name: Deploy to EB
@@ -32,7 +32,7 @@ workflows:
   version: 2
   archive_and_deploy:
     jobs:
-      - build
+      - archive
       - deploy:
           requires:
-            - build
+            - archive
