@@ -22,6 +22,7 @@ jobs:
     steps:
       - attach_workspace: # workspaceをアタッチする
           at: .
+      - run:
           name: Deploy to EB
           command: |
             pip install awsebcli --upgrade
