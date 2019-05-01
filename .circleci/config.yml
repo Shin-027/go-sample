@@ -29,7 +29,7 @@ jobs:
             cd ~/project/{{ORG_NAME}}/{{REPO_NAME}}/eb-go-sample/ && eb deploy
       - run:
           name: Notification to Slack
-          commaned:  |
+          command:  |
             curl -X POST \
             $SLACK_WEBHOOK_URL \
             -H 'content-type: application/json' \
@@ -39,7 +39,7 @@ jobs:
           when: on_success
       - run:
           name: Notification to Slack
-          commaned:  |
+          command:  |
             curl -X POST \
             $SLACK_WEBHOOK_URL \
             -H 'content-type: application/json' \
