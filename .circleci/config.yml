@@ -53,6 +53,9 @@ workflows:
   archive_and_deploy:
     jobs:
       - archive
+         filters:
+          tags:
+            only: /v.*/      
       - deploy:
           requires:
             - archive
