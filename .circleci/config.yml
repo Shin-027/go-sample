@@ -34,7 +34,7 @@ jobs:
             $SLACK_WEBHOOK_URL \
             -H 'content-type: application/json' \
             -d '{
-              "text": "Deploy succeeded!"
+              "text": "Deploy succeeded!!"
             }'
           when: on_success
       - run:
@@ -44,7 +44,7 @@ jobs:
             $SLACK_WEBHOOK_URL \
             -H 'content-type: application/json' \
             -d '{
-              "text": "Deploy Failed!"
+              "text": "Deploy Failed!!"
             }'
           when: on_fail
 
@@ -58,6 +58,6 @@ workflows:
             - archive
           filters:
            branches:
-             ignore: /.*/            
+             ignore: /.*/
            tags:
              only: /^v.*/
