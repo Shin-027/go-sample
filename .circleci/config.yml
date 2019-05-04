@@ -57,7 +57,7 @@ workflows:
           requires:
             - archive
           filters:
+           branches:
+             ignore: /.*/            
            tags:
              only: /^v.*/
-          branches:
-             ignore: /.*/
