@@ -52,10 +52,10 @@ workflows:
   version: 2
   archive_and_deploy:
     jobs:
-      - archive
+      - archive:
          filters:
           tags:
-            only: /v.*/      
+            only: /v.*/
       - deploy:
           requires:
             - archive
